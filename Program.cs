@@ -9,7 +9,7 @@ namespace ApiBanco
         int saldoLimite = 20000;
         bool MaximoCobro(TarjetaCredito credit) //Si el credito es menor al limite de saldo devuelve verdadero si no, devuelve falso
         {
-            if(credit.Saldo < Limite)
+            if(credit.Saldo < saldoLimite)
             {
                 return true;
             }
@@ -18,7 +18,7 @@ namespace ApiBanco
         }
         bool validarTarjeta(TarjetaDebito debit)
         {
-            if(debit.NumeroDeTarjeta.leght != 16)
+            if(debit.NumeroDeTarjeta > 999999999999999 && debit.NumeroDeTarjeta < 10000000000000000)
             {
                 return false;
             }
@@ -26,7 +26,7 @@ namespace ApiBanco
             {
                 return false;
             }
-            if (debit.Ccv.leght != 3)
+            if (debit.Ccv > 99 && debit.Ccv < 1000)
             {
                 return false;
             }
@@ -34,7 +34,7 @@ namespace ApiBanco
         }
         bool validarTarjeta(TarjetaCredito credit)
         {
-            if (credit.NumeroDeTarjeta.leght != 16)
+            if (credit.NumeroDeTarjeta > 999999999999999 && credit.NumeroDeTarjeta < 10000000000000000)
             {
                 return false;
             }
@@ -42,7 +42,7 @@ namespace ApiBanco
             {
                 return false;
             }
-            if (credit.Ccv.leght != 3)
+            if (credit.Ccv > 99 && credit.Ccv < 1000)
             {
                 return false;
             }
