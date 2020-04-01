@@ -1,4 +1,4 @@
-﻿using ApiBanco.Models;
+using ApiBanco.Models;
 using System;
 
 namespace ApiBanco
@@ -15,6 +15,14 @@ namespace ApiBanco
             }
 
             return false;
+        }
+        bool fondosTarjeta(TarjetaCredito credit, Transaccion transaccion)
+        {
+            if(credit.Saldo < transaccion.Cantidad)
+            {
+                return false;
+            }
+            return true;
         }
         bool validarTarjeta(TarjetaDebito debit)
         {
