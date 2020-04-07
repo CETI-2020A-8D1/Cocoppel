@@ -7,6 +7,7 @@ namespace Cocoppel.Models
     {
         public int IdnumeroDeCuenta { get; set; }
         public int Idusuario { get; set; }
+        public bool Valida { get; set; }
         public decimal Balance { get; set; }
         public DateTime FechaVencimiento { get; set; }
 

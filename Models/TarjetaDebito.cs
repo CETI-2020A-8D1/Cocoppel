@@ -6,6 +6,7 @@ namespace Cocoppel.Models
     public partial class TarjetaDebito
     {
         public int IdnumeroDeCuenta { get; set; }
+        public bool Valida { get; set; }
         public string EntidadEmisora { get; set; }
         public string Titular { get; set; }
         public string Numero { get; set; }
