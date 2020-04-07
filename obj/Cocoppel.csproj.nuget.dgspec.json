@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\chris\\source\\repos\\Cocoppel\\Cocoppel.csproj": {}
+    "C:\\Users\\chris\\Cocoppel\\Cocoppel.csproj": {}
   },
   "projects": {
-    "C:\\Users\\chris\\source\\repos\\Cocoppel\\Cocoppel.csproj": {
+    "C:\\Users\\chris\\Cocoppel\\Cocoppel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\chris\\source\\repos\\Cocoppel\\Cocoppel.csproj",
+        "projectUniqueName": "C:\\Users\\chris\\Cocoppel\\Cocoppel.csproj",
         "projectName": "Cocoppel",
-        "projectPath": "C:\\Users\\chris\\source\\repos\\Cocoppel\\Cocoppel.csproj",
+        "projectPath": "C:\\Users\\chris\\Cocoppel\\Cocoppel.csproj",
         "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\chris\\source\\repos\\Cocoppel\\obj\\",
+        "outputPath": "C:\\Users\\chris\\Cocoppel\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",

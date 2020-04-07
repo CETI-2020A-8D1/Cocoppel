@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zWERr0x8JhqgRskJPlCCL3rE7SJvnqrbEFNdv+KUjerpB/vBAbmhxRo4J+1zCRkMncXarL3Doso1ARnssuVdYA==",
+  "dgSpecHash": "2+hRFNEuikWzI5tZNcDmveQgzGD6ZbWkAkBCrDfKV3q4ydFq5Xwcj1PePYyegJZDlK6H1OHx2d2Nwjp3PfL9jg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\chris\\source\\repos\\Cocoppel\\Cocoppel.csproj",
+  "projectFilePath": "C:\\Users\\chris\\Cocoppel\\Cocoppel.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\chris\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\chris\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
