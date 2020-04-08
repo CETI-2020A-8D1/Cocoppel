@@ -1,23 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ApiBanco.Models
+namespace Cocoppel.Models
 {
     public partial class TarjetaCredito
     {
-        public TarjetaCredito()
-        {
-            Cliente = new HashSet<Cliente>();
-            Transaccion = new HashSet<Transaccion>();
-        }
+        public int IdlineaCredito { get; set; }
+        public bool Valida { get; set; }
+        public string EntidadEmisora { get; set; }
+        public string Titular { get; set; }
+        public string Numero { get; set; }
+        public DateTime FechaCaducidad { get; set; }
+        public int Cvv { get; set; }
+        public int Nip { get; set; }
+        public string MarcaInternacional { get; set; }
 
-        public long NumeroDeTarjeta { get; set; }
-        public DateTime FechaVencimiento { get; set; }
-        public short Ccv { get; set; }
-        public int Limite { get; set; }
-        public int Saldo { get; set; }
-
-        public ICollection<Cliente> Cliente { get; set; }
-        public ICollection<Transaccion> Transaccion { get; set; }
+        public virtual LineaCredito IdlineaCreditoNavigation { get; set; }
     }
 }
