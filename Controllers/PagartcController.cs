@@ -7,25 +7,26 @@ using Microsoft.AspNetCore.Mvc;
 using Cocoppel.Models;
 using System.Numerics;
 using Microsoft.EntityFrameworkCore;
+using Cocoteca.Models;
 
 namespace Cocoppel.Controllers
 {
-    [Route("api/pagartc")]
     [ApiController]
-    public class PagarConTarjetaCreditoController : ControllerBase
+    [Route("api/[controller]")]
+    public class PagartcController : ControllerBase
     {
         private readonly CocoppelContext _context;
 
-        public PagarConTarjetaCreditoController(CocoppelContext context)
+        public PagartcController(CocoppelContext context)
         {
             _context = context;
         }
 
         // POST: api/pagartc
         [HttpPost]
-        public async Task<IActionResult> PostCreditCard(string numeroTarjetaCredito, int CuentaChequesADepositar, DateTime fechaDeCaducidadTarjetaCredito, int cvvTarjetaCredito, decimal precioAPagar)
+        public async Task<IActionResult> PostCreditCard([FromBody]Transaccion transaccion)
         {
-            var tarjetaCredito = _context.TarjetaCredito.Where( tc => tc.Numero.Equals(numeroTarjetaCredito)).First();
+            var tarjetaCredito = _context.TarjetaCredito.Where( tc => tc.Numero.Equals(transaccion.Tarjeta.Numero)).First();
 
             if (tarjetaCredito == null || tarjetaCredito.Valida == false) {
                 return NotFound();
@@ -33,19 +34,21 @@ namespace Cocoppel.Controllers
 
             var lineaCredito = await _context.LineaCredito.FindAsync(tarjetaCredito.IdlineaCredito);
 
-            var CuentaCheques = await _context.CuentaCheques.FindAsync(CuentaChequesADepositar);
+            var CuentaChequesDeposito = await _context.CuentaCheques.FindAsync(transaccion.NumeroCuenta);
 
-            if (tarjetaCredito.FechaCaducidad != fechaDeCaducidadTarjetaCredito || tarjetaCredito.Cvv != cvvTarjetaCredito) {
+            var fecha = new DateTime(transaccion.Tarjeta.Año, transaccion.Tarjeta.Mes, 1);
+
+            if (tarjetaCredito.FechaCaducidad != fecha || tarjetaCredito.Cvv != transaccion.Tarjeta.Cvv) {
                 return Unauthorized();
             }
 
-            if (precioAPagar > lineaCredito.SaldoRestante || CuentaCheques == null)
+            if (transaccion.Precio > lineaCredito.SaldoRestante || CuentaChequesDeposito == null)
             {
                 return StatusCode(StatusCodes.Status402PaymentRequired);
             }
             else {
-                lineaCredito.SaldoRestante -= precioAPagar;
-                CuentaCheques.Balance += precioAPagar;
+                lineaCredito.SaldoRestante -= transaccion.Precio;
+                CuentaChequesDeposito.Balance += transaccion.Precio;
                 await _context.SaveChangesAsync();
                 return Ok();
             }
