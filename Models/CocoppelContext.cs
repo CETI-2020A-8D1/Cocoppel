@@ -5,23 +5,43 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Cocoppel.Models
 {
+    /// <summary>
+    /// Clase CocoppelContext
+    /// Crea el modelo de negocios y DTOs a partir de la base de datos Cocoppel.sql
+    /// </summary>
     public partial class CocoppelContext : DbContext
     {
+        /// <summary>
+        /// Constructor CocoppelContext
+        /// </summary>
         public CocoppelContext()
         {
         }
 
+        /// <summary>
+        /// Constructor CocoppelContext
+        /// </summary>
+        /// <param name="options">Opciones para configurar el contexto de la base de datos</param>
         public CocoppelContext(DbContextOptions<CocoppelContext> options)
             : base(options)
         {
         }
 
+
+        /// <summary>
+        /// DTOs, vease la base de datos Cocoppel.sql o el método OnModelCreating para más información sobre relaciones entre ellas
+        /// </summary>
         public virtual DbSet<CuentaCheques> CuentaCheques { get; set; }
         public virtual DbSet<LineaCredito> LineaCredito { get; set; }
         public virtual DbSet<TarjetaCredito> TarjetaCredito { get; set; }
         public virtual DbSet<TarjetaDebito> TarjetaDebito { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
 
+        /// <summary>
+        /// Método OnConfiguring
+        /// Invocado al configurar la base de datos con el string de conexión para crear el modelo
+        /// </summary>
+        /// <param name="optionsBuilder">Constructor de opciones</param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -30,6 +50,11 @@ namespace Cocoppel.Models
             }
         }
 
+        /// <summary>
+        /// Método OnModelCreating
+        /// Invocado cuando se crea el modelo de la base de datos
+        /// </summary>
+        /// <param name="modelBuilder">Constructor de modelo</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CuentaCheques>(entity =>

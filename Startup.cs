@@ -24,14 +24,23 @@ namespace Cocoppel
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// Método ConfigureServices
+        /// Configura servicios de base de datos y enrutamiento por atributos de controladores
+        /// </summary>
+        /// <param name="services">Interfaz de servicios por configurar</param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<CocoppelContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CocoppelDatabase")));
             services.AddControllers();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// Método Configure
+        /// Usado para configurar el entorno de la aplicación y web hosting
+        /// </summary>
+        /// <param name="app">Interfaz de aplicación por configurar</param>
+        /// <param name="env">Interfaz de entorno web por configurar</param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
